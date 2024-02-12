@@ -34,8 +34,12 @@ def admin_login():
 @app.route('/admin/libros')
 def admin_libros():
     conexion=mysql.connect()
-    print(conexion)
-    return render_template('admin/libros.html')
+    cursor=conexion.cursor()
+    cursor.execute("SELECT * FROM `libros`")
+    libros=cursor.fetchall()
+    conexion.commit()
+    print(libros)
+    return render_template('admin/libros.html',libros=libros)
 
 @app.route('/admin/libros/guardar', methods=['POST'])
 def admin_libros_guardar():
@@ -58,6 +62,11 @@ def admin_libros_guardar():
     print(_archivo)
     return redirect('/admin/libros')
 
+@app.route('/admin/libros/borrar', methods=['POST'])
+def admin_libro_borrar():
+    _id=request.form['txtID']
+    print(_id)
+    return redirect('/admin/libros')
 
 if __name__ == '__main__':
     app.run(debug=True)
