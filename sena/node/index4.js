@@ -27,7 +27,6 @@ function agregarOyente() {
     oyente.residencia = prompt("Favor ingresar su ciudad de residencia: ");
     oyente.origen = prompt("Favor ingresar su ciudad de origen: ");
     oyente.artistaFavorito = prompt("Favor ingresar su artista favorito: ");
-
     oyente.cancionesFavoritas = [];
 
     for (let i = 0; i < 3; i++) {
@@ -43,7 +42,6 @@ function mostrarInformacionOyente(oyente) {
     console.log(oyente);
 }
 
-// Menú principal
 let opcion;
 do {
     console.log("\nMenú:");
